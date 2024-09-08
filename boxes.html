@@ -1,0 +1,44 @@
+<html>
+  <body width="100%" height="100%" style="background-color:powderblue;">
+    <canvas></canvas>
+
+    <script>
+      const canvas = document.querySelector("canvas");
+      const context = canvas.getContext('2d');
+
+      canvas.width = 800;
+      canvas.height = 600;
+
+      const lineWidth = 4;
+      const howManyBoxes = 5;
+      const howSmaller = 0.6;
+      const bounds = Math.min(canvas.width, canvas.height);
+
+      const margin = Math.floor(bounds * 0.2 / 2);
+      const gap = 30;
+      const wall = Math.floor(((bounds * 0.8) - (gap * howManyBoxes)) / howManyBoxes);
+      const smallerWall = wall * howSmaller;
+
+      context.lineWidth = lineWidth;
+      context.strokeStyle = 'white';
+
+      for (let i = 0; i < 5; i++){
+        const xPos = i * (wall+ gap) + margin;
+
+        for (let j = 0; j < 5; j++){
+          const yPos = j * (wall+ gap) + margin;
+          
+          context.rect(xPos, yPos, wall, wall);
+          context.stroke();
+
+          if (Math.random(1) > 0.5) {
+            const movePos = (wall - smallerWall)/2;
+
+            context.rect(xPos + movePos, yPos + movePos, smallerWall, smallerWall);
+            context.stroke();
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
