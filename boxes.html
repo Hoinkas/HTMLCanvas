@@ -1,13 +1,15 @@
 <html>
-  <body width="100%" height="100%" style="background-color:powderblue;">
+  <body width="100%" height="100%">
     <canvas></canvas>
 
     <script>
       const canvas = document.querySelector("canvas");
       const context = canvas.getContext('2d');
-
-      canvas.width = 800;
-      canvas.height = 600;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      
+      context.fillStyle = 'powderblue'
+      context.fillRect(0, 0, canvas.width, canvas.height);
 
       const lineWidth = 4;
       const howManyBoxes = 5;
@@ -16,7 +18,7 @@
 
       const margin = Math.floor(bounds * 0.2 / 2);
       const gap = 30;
-      const wall = Math.floor(((bounds * 0.8) - (gap * howManyBoxes)) / howManyBoxes);
+      const wall = Math.floor(((bounds * 0.8) - (gap * (howManyBoxes-1))) / howManyBoxes);
       const smallerWall = wall * howSmaller;
 
       context.lineWidth = lineWidth;

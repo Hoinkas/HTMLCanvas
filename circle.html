@@ -1,0 +1,39 @@
+<html>
+  <body width="100%" height="100%">
+    <canvas></canvas>
+
+    <script>
+      const canvas = document.querySelector("canvas");
+      const context = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      
+      const width = canvas.width;
+      const height = canvas.height;
+      
+      context.fillStyle = 'powderblue';
+      context.fillRect(0, 0, width, height);
+
+      context.fillStyle = "white";
+      const x = width * 0.5;
+      const y = height * 0.5;
+      const w = 300;
+      const h = 300;
+
+      context.save();
+      context.translate(x-(w/2), y-(h/2));
+      context.rotate(0.8);
+
+      context.beginPath();
+      context.rect(0, 0, w, h);
+      context.fill();
+      context.restore();
+
+      context.fillStyle = "red";
+      context.translate(x, y);
+      context.beginPath();
+      context.arc(0, 0, 50, 0, Math.PI * 2);
+      context.fill();
+    </script>
+  </body>
+</html>

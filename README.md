@@ -1,1 +1,1 @@
-# HTMLCanvas
+npx canvas-sketch-cli [filename].js --output=./Drawings
